@@ -58,7 +58,7 @@ function parseToJL(text){
     text = text.replace(/(\bfor\b *\w+ *(?:\bin\b|=)) *0(.*)/g, '$1 1$2');
     text = text.replace(/(\bfor\b *\w+ *(?:\bin\b|=)) *0(.*)/g, '$1 1$2 # WARNING: was ++$1');
     text = text.replace(/\bfor\b *\((.*)\)/g, 'for $1 # WARNING: spacial case of "for", please fix!\n');
-    text = text.replace(/\bfor\b *([\w\.]* (?:\bin\b|=) *[\d\w\.]*:[\d\w\.]*:*[\d\w\.]*)[\r\n\t\s]*\bfor\b *([\w\.]* (?:\bin\b|=) *[\d\w\.]*:[\d\w\.]*:*[\d\w\.]*)/g, 'for $1, $2 # Warning: there's probably an extra "end" below due to for-concatination.\n');
+    text = text.replace(/\bfor\b *([\w\.]* (?:\bin\b|=) *[\d\w\.]*:[\d\w\.]*:*[\d\w\.]*)[\r\n\t\s]*\bfor\b *([\w\.]* (?:\bin\b|=) *[\d\w\.]*:[\d\w\.]*:*[\d\w\.]*)/g, 'for $1, $2 # Warning: there\'s probably an extra "end" below due to for-concatination.\n');
     // make it more pretty...
     text = text.replace(/[\r\n]\t*\s*\bend\b *[\r\n\t\s](#*=*)/g, '\nend\n$1');
     text = text.replace(/((?:\bfor\b|\bif\b).*)[\r\t\n]*/g, '$1');
