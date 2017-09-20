@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <head>
-    <link href="prism.css" rel="stylesheet" />
-    <script src="robot.js"></script>
-    <link href="http://travisa9.github.io/RoboJStoJL/prism.css" rel="stylesheet" />
+    <link href="http://travisa9.github.io/RoboJStoJL/prism.css" rel="stylesheet">
     <script src="http://travisa9.github.io/RoboJStoJL/robot.js"></script>
 </head>
 <html>
-<body style="background:lightgrey;">
 
+<style>
+    .msg{
+        font-size: 20px; margin: 0px; width: 60%;
+        background:azure; border: thin solid black;
+        border-radius: 5px; padding: 5px;
+        position:absolute;
+        display: none; left: 200px;
+    }
+    .alert:hover + div{ display:inline-block; }
+    .border{ border: thin solid black;
+    border-radius: 5px; padding: 5px; }
+</style>
 
-    <h1>Turn your JS to Julia:</h1>
-    <p>Open a js file and it will be parsed!</p>
-    <input type='file' accept='text/js' onchange='openFile(event)'></input><br>
-     <divstyle="background:azure; border: thin solid black; border-radius: 5px; padding: 5px; font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-     font-size: 18px;"></div>
-     <pre><code class="language-julia"  id='output' >function f(x,y)
+<body style="background:lightgrey; padding: 0px;">
+<div style="margin: 0px;">
+    <div style="font-size: 20px; margin: 0px; width: 39%; color: lightgrey; background:#333; border: thin solid black; border-radius: 5px; padding: 5px; display:inline-block;">
+        <div style="font-size: 35px; display: inline;">Turn your JS to Julia:</div>
+        <input style="display: inline-block; width: 200px; " type='file' accept='text/js' onchange='openFile(event)'></input><br>
+        <div style="display: inline-block; font-size: 20px; color: steelblue">Open a js file and it will be parsed!</div>
+
+    </div>
+<div class="alert border" style="display: inline-block; font-size: 32px; color:red; margin:10px">Warning!</div>
+<div class="msg">Please remember this is just a tool to help you get STARTED on porting your js to jl.
+    The code will most likely not run.
+    It will surely need polishing and will most definitly not be optimised to run well.
+    Why? ...because julia and js are quite different in many respects and just
+    switching out one systax element for another just isn't enough to get you up and running. Please take
+    the time to get to know julia and optimise any code you create here. I hope this tool is usefull to you:
+    travisashworth2007@gmail.com <!--a href="mailto:travisashworth2007@gmail.com"> Email</a--></div>
+</div>
+     <pre style="height: 80vh; margin: 0px;"><code class="language-julia"  id='output' >function f(x,y)
            x + y
        end</code></pre>
 </body>
