@@ -46,8 +46,7 @@ function parseToJL(text){
     text = text.replace(/([\w\.]*)\.\bpush\b\(/g, 'push!( $1, ');
     // functions
     text = text.replace(/[\t ]*([\w]*\.\bprototype\b)\s*=/g, '#==============================================================================\n#= $1 =# \n');
-    text = text.replace(/[\t ]*([\w]*\.\bprototype\b)\.(\w*) *= *\bfunction\b/g,
-    '#==============================================================================\n#= $1 =# \nfunction $2');
+    text = text.replace(/[\t ]*([\w]*\.\bprototype\b)\.(\w*) *= *\bfunction\b/g, '#==============================================================================\n#= $1 =# \nfunction $2');
     text = text.replace(/[\t ]*(\w+)\s*=+\s*\bfunction\(\b/g, '#==============================================================================\nfunction $1(');
     text = text.replace(/[\t ]*([\w]*)\s*:\s*\bfunction\b\(/g, '#==============================================================================\nfunction $1(');
     text = text.replace(/\bend\b *,/g, 'end');
@@ -58,15 +57,24 @@ function parseToJL(text){
     text = text.replace(/(\bfor\b *\w+ *(?:\bin\b|=)) *0(.*)/g, '$1 1$2');
     text = text.replace(/(\bfor\b *\w+ *(?:\bin\b|=)) *0(.*)/g, '$1 1$2 # WARNING: was ++$1');
     text = text.replace(/\bfor\b *\((.*)\)/g, 'for $1 # WARNING: spacial case of "for", please fix!\n');
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
     // The following line was giving me problems when served but not locally on my computer
        //text = text.replace(/\bfor\b *([\w\.]* (?:\bin\b|=) *[\d\w\.]*:[\d\w\.]*:*[\d\w\.]*)[\r\n\t\s]*\bfor\b *([\w\.]* (?:\bin\b|=) *[\d\w\.]*:[\d\w\.]*:*[\d\w\.]*)/g, 'for $1, $2 # Warning: there\'s probably an extra "end" below due to for-concatination.\n');
-
-     // make it more pretty...
+    // make it more pretty...
     text = text.replace(/[\r\n]\t*\s*\bend\b *[\r\n\t\s](#*=*)/g, '\nend\n$1');
     text = text.replace(/((?:\bfor\b|\bif\b).*)[\r\t\n]*/g, '$1');
     text = text.replace(/(\bend\b)\) *\(([^)]*)\);*/g, '$1 ## $2');
-    text = text.replace(/\(\bfunction\b\(([^)]*)\)/g,
-    '\n#==============================================================================\n# This was an object and could possibly be be converted to a struct\n#==============================================================================\nfunction $1()');
+    text = text.replace(/\(\bfunction\b\(([^)]*)\)/g, '\n#==============================================================================\n# This was an object and could possibly be be converted to a struct\n#==============================================================================\nfunction $1()');
 
     text = text.replace(/end\)*;*/g, 'end');
     text = text.replace(/\+ *\n*(['"])/g, '* $1');
